@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Approval Request</title>
+    <style>
+        .btn {
+            display: inline-block; 
+            color: #007bff; 
+            padding: 10px 20px; 
+            text-decoration: none; 
+            border: 2px solid #007bff; 
+            border-radius: 5px; 
+            font-size: 16px; 
+            font-weight: bold; 
+            cursor: pointer; 
+        }
+        .btn:hover {
+            color: #0056b3; 
+            border-color: #0056b3; 
+        }
+    </style>
+</head>
+<body>
+    <h2>Event Approval Request</h2>
+    <p>Dear Event Manager,</p>
+    
+    <p>A new event has been added and requires your approval:</p>
+
+    <p><strong>Event Name:</strong> {{ event.name }}</p>
+    <p><strong>Event Description:</strong> {{ event.description }}</p>
+    <p><strong>Event Start Time:</strong> {{ event.startTime |time:"g:i" }}</p>
+    <p><strong>Event End Time:</strong> {{ event.endTime |time:"g:i" }}</p>
+    <p><strong>Event Start Date:</strong> {{ event.startDate }}</p>
+    <p><strong>Event End Date:</strong> {{ event.endDate}}</p>
+    <p><strong>Event Participation:</strong> {{ event.participation }}</p>
+    <!-- Add more event details as needed -->
+    <p>Please review the event details and take necessary action.</p>
+    <p>Thank you.</p>
+    <a href="http://localhost:8000{% url 'approve_event' id=event.id %}" class="btn">Approved</a>
+</body>
+</html>

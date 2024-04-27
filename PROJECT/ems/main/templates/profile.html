@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- profile.html -->
+<div class="card w-50 mb-3">
+    <div class="card-body">
+      <h5 class="card-title">{{ current_user|capfirst }}</h5>
+      <p class="card-text">Email : {{ current_user.email }}</p>
+      <p class="card-text">Designation : {{ current_user.role }}</p>
+    </div>
+  </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Event Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Venue</th>
+                <th scope="col">Chief Guest</th>
+                <th scope="col">Approval Status</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for events in event %}   
+              <tr>
+                <td>{{ events.title|capfirst }}</td>
+                <td>{{ events.description|capfirst }}</td>
+                <td>{{ events.venue|capfirst }}</td>
+                <td>{{ events.chief_guest|capfirst }}</td>
+                {% if events.approval == False %}
+                    <td class="text-danger">{{ events.approval|capfirst }}</td>
+                {% else %}
+                    <td class="text-success">{{ events.approval|capfirst }}</td>
+                {% endif %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+{% endblock %}
